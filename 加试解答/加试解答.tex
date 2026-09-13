@@ -1,0 +1,452 @@
+\documentclass[UTF8,11pt,fontset=fandol]{ctexart}
+\usepackage[a4paper,top=21mm,bottom=22mm,left=23mm,right=23mm]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{tikz,booktabs,array,enumitem,fancyhdr}
+\usepackage[hidelinks,pdfauthor={数学解答},pdftitle={2026高联预赛A卷加试解答}]{hyperref}
+\usetikzlibrary{calc}
+\setlength{\headheight}{14pt}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\small 2026 高联预赛 A 卷}
+\fancyhead[R]{\small 加试解答}
+\fancyfoot[C]{\thepage}
+\setlength{\parskip}{4pt}
+\linespread{1.18}
+\setlist[enumerate]{leftmargin=2em,itemsep=3pt,topsep=3pt}
+\numberwithin{equation}{section}
+\ctexset{section={format=\Large\bfseries,number=\chinese{section}、,aftername={}}}
+\newcommand{\problem}{\noindent\textbf{题目\quad}}
+\newcommand{\solution}{\par\medskip\noindent\textbf{解答\quad}}
+\newcommand{\step}[1]{\par\medskip\noindent\textbf{#1}\par}
+\newcommand{\qedmark}{\qed\par}
+
+\begin{document}
+\begin{center}
+  {\LARGE\bfseries 2026 高联预赛 A 卷加试解答}\par
+  \vspace{5pt}
+  {\small 对应本项目试卷 PDF 第二页的四道加试题}
+\end{center}
+
+\section{正约数中的等差数列}
+\problem
+设 $1=d_1<d_2<\cdots<d_m=n$ 是正整数 $n$ 的所有正约数，$m\ge4$。
+对任意 $i,j\in\{1,\ldots,m-1\}$，均存在 $k\in\{1,\ldots,m\}$，
+使 $d_i,d_j,d_k$ 在某种顺序下构成等差数列。求 $m$ 的所有可能值。
+
+\solution 答案为 $\boxed{m=4}$。
+
+设 $p$ 是 $n$ 的最小素因子，$L=n/p$ 是 $n$ 的最大真约数。
+由于 $m\ge4$，$n$ 是合数，故 $L\ge p$；并且 $L\ge3$。
+
+对真约数 $1,L$ 应用题设。能够与它们组成等差数列的第三个数只能是
+\[
+ 2-L,\qquad \frac{L+1}{2},\qquad 2L-1.
+\]
+其中 $2-L<0$，不可能是正约数。如果 $2L-1\mid n=pL$，由
+\[
+ \gcd(2L-1,L)=1
+\]
+可得 $2L-1\mid p$，但 $2L-1>L\ge p$，矛盾。因此只能有
+\[
+ L\text{ 为奇数},\qquad \frac{L+1}{2}\mid pL.
+\]
+又因为
+\[
+ \gcd\!\left(\frac{L+1}{2},L\right)=1,
+\]
+故 $(L+1)/2\mid p$。它大于 $1$，而 $p$ 为素数，所以
+\[
+ \frac{L+1}{2}=p,\qquad L=2p-1,\qquad n=p(2p-1).
+\]
+
+下面证明 $2p-1$ 是素数。否则，它的每个素因子都是 $n$ 的素因子，
+因而不小于 $p$，从而 $2p-1\ge p^2$；这与 $p^2>2p-1$ 矛盾。
+由于 $2p-1>p$，$n$ 是两个不同素数的乘积，因此 $m=4$。
+
+最后验证 $m=4$ 确实可以出现：取 $n=6$，其真约数为 $1,2,3$。
+任意两个不同的真约数都可与剩下的一个组成等差数列；当 $i=j$ 时，
+取 $k=i$ 即得到公差为 $0$ 的等差数列。故题设全部满足。\qedmark
+
+\newpage
+\section{由倍角条件证明圆的切线}
+\problem
+在锐角三角形 $ABC$ 中，$AB<AC$，$AD$ 是 $BC$ 边上的高，
+$H$ 为垂心，$O$ 为外心，$N$ 为 $HO$ 的中点。
+线段 $BD$ 内一点 $P$ 满足 $\angle PND=2\angle PAD$。
+证明：直线 $BC$ 与三角形 $AOP$ 的外接圆相切。
+
+\solution
+以 $D$ 为原点、$DC$ 为 $x$ 轴正方向，并将长度单位取为 $AD$，设
+\[
+ A=(0,1),\quad B=(-b,0),\quad C=(c,0),\quad P=(-t,0).
+\]
+锐角条件及 $AB<AC$ 给出 $0<b<c$、$bc<1$，且 $0<t<b$。
+由高线和垂直平分线的方程可得
+\[
+ H=(0,bc),\qquad
+ O=\left(\frac{c-b}{2},\frac{1-bc}{2}\right).
+\]
+记 $O=(u,v)$，则 $u>0$、$0<v<\tfrac12$，并且
+\[
+ N=\left(\frac u2,\frac{1-v}{2}\right).
+\]
+令 $s=u/2>0$、$w=(1-v)/2>0$。从 $N$ 出发的两个向量为
+\[
+ \overrightarrow{ND}=(-s,-w),\qquad
+ \overrightarrow{NP}=(-s-t,-w).
+\]
+它们的数量积为 $s(s+t)+w^2>0$，故 $\theta=\angle PND$ 是锐角，且
+\[
+ \tan\theta=\frac{tw}{s(s+t)+w^2}.
+\]
+另一方面，令 $\alpha=\angle PAD$，则 $\tan\alpha=t$。
+由 $\theta=2\alpha<\pi/2$ 知 $t<1$，可以使用倍角公式，得到
+\[
+ \frac{tw}{s(s+t)+w^2}=\frac{2t}{1-t^2}.
+\]
+约去 $t>0$，代入 $s=u/2,w=(1-v)/2$，整理为
+\begin{equation}\label{eq:tangent}
+ u^2+2ut+(1-v)t^2-v(1-v)=0.
+\end{equation}
+
+考虑圆
+\begin{equation}\label{eq:circle}
+ \Gamma:\quad (x+t)^2+y^2-(1+t^2)y=0.
+\end{equation}
+它的圆心为 $\bigl(-t,(1+t^2)/2\bigr)$，半径为 $(1+t^2)/2$，
+故与 $x$ 轴相切于 $P$；代入 $A=(0,1)$ 可知 $A\in\Gamma$。
+将 $O=(u,v)$ 代入式 \eqref{eq:circle}，左边恰为式 \eqref{eq:tangent} 的左边，
+所以 $O\in\Gamma$。三点 $A,O,P$ 互异，且同在非退化圆 $\Gamma$ 上，
+因此 $\Gamma$ 就是三角形 $AOP$ 的外接圆，$BC$ 与之相切于 $P$。\qedmark
+
+\newpage
+\section{有指标限制的三项不等式}
+\problem
+设整数 $n>100$，实数 $2\ge a_0\ge a_1\ge\cdots\ge a_{n-1}\ge0$。
+对任意 $0\le i\le j\le k\le n-1$ 且 $i+j+k\ge n$，均有
+\[
+ a_i a_j+a_j a_k+a_k a_i\le a_i+a_j+a_k.
+\]
+证明：
+\[
+ \text{(1)}\quad \sum_{i=1}^{n-1}a_i\le n-1;
+ \qquad
+ \text{(2)}\quad \sum_{i=0}^{n-1}a_i\le n.
+\]
+
+\solution
+代换 $x_i=2a_i-1$ 后，取值范围变为 $[-1,3]$，题设不等式恰好化为
+\[
+ x_i x_j+x_j x_k+x_k x_i\le3.
+\]
+我们先证明一个同时适用于奇、偶数长度的引理，再分别应用于两问。
+
+\step{引理}
+设整数 $N\ge8$，且
+\[
+ 3\ge x_0\ge x_1\ge\cdots\ge x_{N-1}\ge-1.
+\]
+若对所有指标和不小于 $N$ 的三元组都有
+\begin{equation}\label{eq:triple}
+ x_i x_j+x_j x_k+x_k x_i\le3,
+\end{equation}
+则 $\sum_{i=0}^{N-1}x_i\le N$。
+这里三元组允许指标重复；由于不等式对称，无须另外限制指标的排列顺序。
+
+\step{引理的证明：分组并循环求和}
+写 $N=2m+\varepsilon$，其中 $\varepsilon\in\{0,1\}$、$m\ge4$，令
+\[
+ h=m+\varepsilon,\qquad
+ u_i=x_i,\quad v_i=x_{h+i}\quad(0\le i<m).
+\]
+偶数情形中这两组包含全部项；奇数情形中暂时略去中间一项 $x_m$。
+再记
+\[
+ U=\sum_{i=0}^{m-1}u_i,\qquad V=\sum_{i=0}^{m-1}v_i,
+ \qquad x=u_0,\qquad t=v_0.
+\]
+将 $(h,h,h)$ 与 $(0,h,h)$ 分别代入 \eqref{eq:triple}，得
+\begin{equation}\label{eq:xt}
+ -1\le v_i\le t\le1,\qquad -1\le x\le3,\qquad 2xt+t^2\le3.
+\end{equation}
+
+对每一对 $0\le i,j<m$，令 $r(i,j)$ 为 $-i-j$ 除以 $m$ 的最小非负余数。
+当 $(i,j)\ne(0,0)$ 时，$i+j+r(i,j)$ 是不小于 $m$ 的 $m$ 的倍数，故
+\[
+ i+j+\bigl(h+r(i,j)\bigr)\ge m+h=N.
+\]
+因此
+\[
+ u_i u_j+u_jv_{r(i,j)}+v_{r(i,j)}u_i\le3
+ \qquad\bigl((i,j)\ne(0,0)\bigr).
+\]
+唯一例外 $(i,j)=(0,0)$ 对应的左边为 $x^2+2xt$。
+固定 $i$ 时，随着 $j$ 遍历，$r(i,j)$ 恰好遍历 $0,\ldots,m-1$；
+固定 $j$ 时同理。将全部 $m^2$ 个左边相加，得到
+\begin{equation}\label{eq:UV}
+ U^2+2UV\le3m^2+E,\qquad E=x^2+2xt-3.
+\end{equation}
+
+\step{引理的证明：控制唯一例外所产生的误差}
+我们证明
+\begin{equation}\label{eq:error}
+ E+V^2\le m^2.
+\end{equation}
+先注意到，由 $-1\le x\le3$、$-1\le t\le1$，有
+\begin{equation}\label{eq:easyerror}
+ E-6(1+t)=(x-3)(x+3+2t)\le0,
+ \quad\text{即}\quad E\le6(1+t).
+\end{equation}
+
+\noindent\textbf{情形一：$V<0$。}
+由于 $v_0=t$，其余 $m-1$ 项均不小于 $-1$，所以
+\[
+ t-(m-1)\le V<0.
+\]
+结合 $m\ge4$、$t\le1$，得
+\begin{align*}
+ m^2-V^2
+ &\ge m^2-(m-1-t)^2\\
+ &=(1+t)(2m-1-t)\\
+ &\ge6(1+t)\ge E.
+\end{align*}
+
+\noindent\textbf{情形二：$V\ge0$。}
+由 $V\le mt$ 知 $0\le t\le1$。我们先验证
+\begin{equation}\label{eq:positiveerror}
+ E\le12(1-t^2).
+\end{equation}
+当 $0\le t\le\tfrac12$ 时，由 \eqref{eq:easyerror} 得
+\[
+ E\le6(1+t)\le9\le12(1-t^2).
+\]
+当 $\tfrac12\le t\le1$ 时，利用 $x\ge t>0$ 及 \eqref{eq:xt}，得
+\[
+ 0<x\le\frac{3-t^2}{2t},\qquad E\le x^2-t^2.
+\]
+故
+\begin{align*}
+ E&\le\frac{(3-t^2)^2}{4t^2}-t^2
+   =\frac{3(t^2+3)}{4t^2}(1-t^2)\\
+  &\le\frac{39}{4}(1-t^2)\le12(1-t^2).
+\end{align*}
+式 \eqref{eq:positiveerror} 得证。于是，由 $0\le V\le mt$、$m^2\ge16>12$，
+\[
+ m^2-V^2\ge m^2(1-t^2)\ge12(1-t^2)\ge E.
+\]
+至此，两种情形都证明了 \eqref{eq:error}。
+
+将 \eqref{eq:UV} 与 \eqref{eq:error} 相加，得
+\[
+ (U+V)^2\le4m^2,\qquad U+V\le2m.
+\]
+若 $\varepsilon=0$，这就是所求结论。
+若 $\varepsilon=1$，则 $3m\ge2m+1=N$，可将 $(m,m,m)$ 代入
+\eqref{eq:triple} 得 $3x_m^2\le3$，特别地 $x_m\le1$。因此
+\[
+ \sum_{i=0}^{N-1}x_i=U+V+x_m\le2m+1=N.
+\]
+引理证毕。
+
+\step{回到原题}
+由引理及代换 $x_i=2b_i-1$，立即得到如下等价表述：
+若长度为 $N\ge8$ 的非增数列 $b_0,\ldots,b_{N-1}$ 取值于 $[0,2]$，
+且指标和不小于 $N$ 时有
+\[
+ b_i b_j+b_j b_k+b_k b_i\le b_i+b_j+b_k,
+\]
+则 $\sum_{i=0}^{N-1}b_i\le N$。
+
+对第 (1) 问，取 $N=n-1$，$b_r=a_{r+1}$（$0\le r\le N-1$）。
+当 $r+s+t\ge N$ 时，原数列中相应的指标和满足
+\[
+ (r+1)+(s+1)+(t+1)\ge N+3=n+2\ge n,
+\]
+故 $b_r$ 满足上述表述中的全部条件。由于 $N=n-1\ge100$，有
+\[
+ \boxed{a_1+\cdots+a_{n-1}\le n-1}.
+\]
+
+对第 (2) 问，直接取 $N=n$、$b_r=a_r$，得到
+\[
+ \boxed{a_0+a_1+\cdots+a_{n-1}\le n}.
+\]
+当所有 $a_i=1$ 时，题设成立且两问都取等号，故两个上界均能达到。\qedmark
+
+\newpage
+\section{\texorpdfstring{$4\times n$ 方格表中的 $S$ 形}{4×n 方格表中的 S 形}}
+\problem
+在 $4\times n$（$n\ge2$）方格表中填入非负实数。
+每个 $S$ 形的四格之和均不小于 $1$，其中允许的四种形状如下（可平移）：
+\begin{center}
+\begin{tikzpicture}[x=4mm,y=4mm,line width=.5pt]
+\foreach \dx/\type in {0/1,4/2,9/3,14/4}{
+  \begin{scope}[shift={(\dx,0)}]
+  \ifnum\type=1
+    \foreach \x/\y in {0/0,0/1,1/1,1/2}{\draw[fill=gray!12] (\x,\y) rectangle +(1,1);}
+  \fi
+  \ifnum\type=2
+    \foreach \x/\y in {1/0,1/1,0/1,0/2}{\draw[fill=gray!12] (\x,\y) rectangle +(1,1);}
+  \fi
+  \ifnum\type=3
+    \foreach \x/\y in {0/0,1/0,1/1,2/1}{\draw[fill=gray!12] (\x,\y) rectangle +(1,1);}
+  \fi
+  \ifnum\type=4
+    \foreach \x/\y in {0/1,1/1,1/0,2/0}{\draw[fill=gray!12] (\x,\y) rectangle +(1,1);}
+  \fi
+  \end{scope}
+}
+\end{tikzpicture}
+\end{center}
+求全表所有数之和的最小值。
+
+\solution 答案是
+\[
+ \boxed{\begin{cases}
+ n-1,&n\text{ 为奇数},\\[3pt]
+ \dfrac{n^2}{n+1},&n\text{ 为偶数}.
+ \end{cases}}
+\]
+以下将行从上至下编号为 $1,2,3,4$，列从左至右编号为 $1,\ldots,n$。
+
+\step{1. 奇数情形：$n=2k+1$}
+对每个 $r=1,\ldots,k$，在上面两行选取四格
+\[
+ (1,2r),\ (1,2r+1),\ (2,2r-1),\ (2,2r).
+\]
+它们构成一个横向 $S$ 形。这 $k$ 个 $S$ 形互不重叠。
+在下面两行作同样的选取，又得到 $k$ 个互不重叠的 $S$ 形，
+且与上面的 $k$ 个也不重叠。因此全表总和至少为 $2k=n-1$。
+
+下图以 $n=7$ 为例，相同字母的四格为一个选中的 $S$ 形，空白格未选：
+\[
+\begin{array}{c|ccccccc}
+ &1&2&3&4&5&6&7\\\hline
+ 1&&A&A&B&B&C&C\\
+ 2&A&A&B&B&C&C&\\
+ 3&&D&D&E&E&F&F\\
+ 4&D&D&E&E&F&F&
+\end{array}
+\]
+为达到下界，在每个偶数列的四格中都填 $1/2$，每个奇数列的四格中都填 $0$。
+每个竖向 $S$ 形在相邻两列中各占两格；每个横向 $S$ 形在连续三列中分别占
+$1,2,1$ 格。因此每个 $S$ 形恰有两格位于偶数列，其数之和恰为 $1$。
+全表总和为 $4k\cdot\tfrac12=2k=n-1$。
+
+\newpage
+\step{2. 偶数情形：$n=2k$，先证明下界}
+将任一可行填法与其关于表格水平中线的反射填法逐格取平均。
+反射仍将允许的 $S$ 形变为允许的 $S$ 形，而逐格平均保持非负性、所有约束及总和。
+所以证明下界时，可以假设第 $j$ 列从上至下的数为
+\[
+ x_j,\quad y_j,\quad y_j,\quad x_j,
+ \qquad x_j,y_j\ge0.
+\]
+全表总和为 $T=2\sum_{j=1}^{2k}(x_j+y_j)$。
+
+先列出将要使用的四类 $S$ 形约束。对 $1\le j\le2k-1$，有竖向约束
+\begin{align*}
+ V_j&:=x_j+y_j+2y_{j+1}\ge1,\\
+ W_j&:=2y_j+x_{j+1}+y_{j+1}\ge1.
+\end{align*}
+对 $1\le j\le2k-2$，有位于第 $1,2$ 行的横向约束
+\begin{align*}
+ H_j&:=x_j+x_{j+1}+y_{j+1}+y_{j+2}\ge1,\\
+ K_j&:=y_j+y_{j+1}+x_{j+1}+x_{j+2}\ge1.
+\end{align*}
+取如下非负系数加权和：
+\begin{equation}\label{eq:weighted}
+ L:=\sum_{r=1}^{k}(V_{2r-1}+W_{2r-1})
+ +\sum_{r=1}^{k-1}\bigl(2rH_{2r}+2(k-r)K_{2r-1}\bigr).
+\end{equation}
+由各项均不小于 $1$，可得
+\[
+ L\ge2k+\sum_{r=1}^{k-1}\bigl(2r+2(k-r)\bigr)=2k^2.
+\]
+另一方面，展开式 \eqref{eq:weighted} 并合并同类项，得到恒等式
+\begin{equation}\label{eq:weightidentity}
+ L=(2k+1)\sum_{j=1}^{2k}(x_j+y_j)-2k(x_1+x_{2k}).
+\end{equation}
+为便于核对，展开后各变量的系数如下：
+\[
+\begin{array}{c|ccc}
+ \text{变量}&x_1,\ x_{2k}&x_j\ (2\le j\le2k-1)&y_j\ (1\le j\le2k)\\\hline
+ \text{系数}&1&2k+1&2k+1
+\end{array}
+\]
+当 $k=1$ 时，上述第二个求和为空，恒等式仍然成立。
+利用 $x_1,x_{2k}\ge0$，最终得到
+\[
+ \frac{2k+1}{2}T=(2k+1)\sum_{j=1}^{2k}(x_j+y_j)
+ \ge L\ge2k^2,
+\]
+即
+\[
+ T\ge\frac{4k^2}{2k+1}=\frac{n^2}{n+1}.
+\]
+
+\newpage
+\step{3. 偶数情形的取等构造}
+令 $q=2k+1$，对 $r=1,\ldots,k$，定义
+\[
+ x_{2r-1}=\frac{r-1}{q},\qquad
+ x_{2r}=\frac{k-r}{q},\qquad
+ y_j=x_j+\frac1q.
+\]
+仍在第 $j$ 列从上至下填入 $x_j,y_j,y_j,x_j$。这些数均非负。
+例如 $n=6$（$k=3$）时，所填数字组成的矩阵为
+\[
+ \frac17
+ \begin{pmatrix}
+ 0&2&1&1&2&0\\
+ 1&3&2&2&3&1\\
+ 1&3&2&2&3&1\\
+ 0&2&1&1&2&0
+ \end{pmatrix}.
+\]
+
+下面逐类检查全部 $S$ 形。
+
+\noindent\textbf{竖向 $S$ 形。}
+由于上下对称，其四格之和必为某个 $V_j$ 或 $W_j$。
+直接代入构造中的数，可得
+\[
+ V_j=W_j=
+ \begin{cases}
+ 1,&j\text{ 为奇数},\\[2pt]
+ 1+\dfrac2q,&j\text{ 为偶数}.
+ \end{cases}
+\]
+故全部竖向约束成立。
+
+\noindent\textbf{横向 $S$ 形。}
+当 $1\le j\le2k-2$ 时，将 $j$ 分为奇、偶两种情况代入，均得到
+\[
+ x_j+2x_{j+1}+x_{j+2}=\frac{2k-1}{q}.
+\]
+位于第 $1,2$ 行或第 $3,4$ 行的横向 $S$ 形，其四格之和为
+\[
+ H_j=K_j=x_j+2x_{j+1}+x_{j+2}+\frac2q=1.
+\]
+位于第 $2,3$ 行的横向 $S$ 形，其四格之和为
+\[
+ y_j+2y_{j+1}+y_{j+2}
+ =x_j+2x_{j+1}+x_{j+2}+\frac4q
+ =1+\frac2q\ge1.
+\]
+当 $n=2$ 时没有横向 $S$ 形，只需前面的竖向检查。
+
+最后计算总和：
+\[
+ \sum_{j=1}^{2k}x_j
+ =\frac1q\sum_{r=1}^{k}\bigl((r-1)+(k-r)\bigr)
+ =\frac{k(k-1)}q,
+\]
+\[
+ T=2\sum_{j=1}^{2k}(x_j+y_j)
+  =4\sum_{j=1}^{2k}x_j+\frac{4k}q
+  =\frac{4k^2}{2k+1}.
+\]
+故偶数情形的下界也能达到，连同奇数情形，结论得证。\qedmark
+
+\end{document}

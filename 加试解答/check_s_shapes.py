@@ -1,4 +1,4 @@
-"""Small linear programs used to check the conjectured answer to Problem 4.
+"""Check Problem 4 using linear programs and exact covering counts.
 
 Run with: uv run --with scipy python check_s_shapes.py
 This numerical check is supplementary; the PDF gives an exact proof.
@@ -44,29 +44,47 @@ def solve(n):
         inner = [v + Fraction(1, n + 1) for v in outer]
         construction = [outer, inner, inner, outer]
 
-        # Exact expansion of the weighted identity in the written proof.
-        coefficients = [0] * (2 * n)
+        # Equivalent multiset certificate for the proof's two counting inequalities.
+        allowed = {frozenset(cells) for cells in placements}
+        selected = []
+        for col in range(0, n, 2):
+            for row in range(2):
+                for shape in SHAPES[:2]:
+                    selected.append([(row + a, col + b) for a, b in shape])
+        assert len(selected) == 2 * n
 
-        def add(weight, cells):
-            for kind, col in cells:
-                coefficients[kind * n + col - 1] += weight
+        corners = {(r, c) for r in (0, 3) for c in (0, n - 1)}
+        whole_board = {(r, c) for r in range(4) for c in range(n)}
+        for pair_index in range(k):
+            packing = []
+            for strip_index in range(k - 1):
+                col = 2 * strip_index
+                bottom_col = col if strip_index < pair_index else col + 2
+                upper = [(0, col + 1), (0, col + 2),
+                         (1, bottom_col), (1, bottom_col + 1)]
+                packing.extend([upper, [(3 - r, c) for r, c in upper]])
+            holes = corners | {(r, c) for r in (1, 2)
+                               for c in (2 * pair_index, 2 * pair_index + 1)}
+            covered = [cell for shape in packing for cell in shape]
+            assert len(packing) == n - 2
+            assert len(covered) == len(set(covered))
+            assert set(covered) == whole_board - holes
+            selected.extend(packing * 2)
 
-        for r in range(1, k + 1):
-            j = 2 * r - 1
-            add(1, [(0, j), (1, j), (1, j + 1), (1, j + 1)])
-            add(1, [(1, j), (1, j), (0, j + 1), (1, j + 1)])
-        for r in range(1, k):
-            j = 2 * r
-            add(2 * r, [(0, j), (0, j + 1), (1, j + 1), (1, j + 2)])
-            j = 2 * r - 1
-            add(2 * (k - r), [(1, j), (1, j + 1), (0, j + 1), (0, j + 2)])
-        assert coefficients == [1] + [n + 1] * (n - 2) + [1] + [n + 1] * n
+        assert len(selected) == n * n
+        counts = {(r, c): 0 for r, c in whole_board}
+        for shape in selected:
+            assert frozenset(shape) in allowed
+            for cell in shape:
+                counts[cell] += 1
+        assert all(count == (1 if cell in corners else n + 1)
+                   for cell, count in counts.items())
 
     assert all(v >= 0 for row in construction for v in row)
     assert all(sum(construction[r][c] for r, c in cells) >= 1 for cells in placements)
     assert sum(sum(row) for row in construction) == expected
     assert abs(result.fun - float(expected)) < 1e-7
-    print(f"n={n}: minimum={expected}; LP, exact construction and applicable weighted identity OK")
+    print(f"n={n}: minimum={expected}; LP, exact construction and applicable double count OK")
 
 
 if __name__ == "__main__":

@@ -155,7 +155,7 @@ $H$ 为垂心，$O$ 为外心，$N$ 为 $HO$ 的中点。
 \textbf{$\triangle AOP$ 的外接圆与 $BC$ 相切于 $P$}。\qedmark
 
 \newpage
-\section{有指标限制的三项不等式}
+\section{首尾配对与余量补偿}
 \problem
 设整数 $n>100$，实数 $2\ge a_0\ge a_1\ge\cdots\ge a_{n-1}\ge0$。
 对任意 $0\le i\le j\le k\le n-1$ 且 $i+j+k\ge n$，均有
@@ -170,143 +170,55 @@ $H$ 为垂心，$O$ 为外心，$N$ 为 $HO$ 的中点。
 \]
 
 \solution
-代换 $x_i=2a_i-1$ 后，取值范围变为 $[-1,3]$，题设不等式恰好化为
-\[
- x_i x_j+x_j x_k+x_k x_i\le3.
-\]
-我们先证明一个同时适用于奇、偶数长度的引理，再分别应用于两问。
+\textbf{首尾配对，再用中间四对的余量补足首项。}
+先注意：若 $3r\ge n$，在题设中取三个指标均为 $r$，得到
+$3a_r^2\le3a_r$，因而 $0\le a_r\le1$。
 
-\step{引理}
-设整数 $N\ge8$，且
+\step{(1) 每一对的和不超过 $2$}
+任取 $1\le i\le j\le n-1$ 且 $i+j=n$。由于 $2i+j\ge n$，
+将 $(i,i,j)$ 代入题设，并利用 $j\ge n/2$ 时 $a_j\le1$，得
 \[
- 3\ge x_0\ge x_1\ge\cdots\ge x_{N-1}\ge-1.
+ (a_i+a_j)^2
+ \le 2a_i+a_j+a_j^2
+ \le2(a_i+a_j).
 \]
-若对所有指标和不小于 $N$ 的三元组都有
-\begin{equation}\label{eq:triple}
- x_i x_j+x_j x_k+x_k x_i\le3,
-\end{equation}
-则 $\sum_{i=0}^{N-1}x_i\le N$。
-这里三元组允许指标重复；由于不等式对称，无须另外限制指标的排列顺序。
-
-\step{引理的证明：分组并循环求和}
-写 $N=2m+\varepsilon$，其中 $\varepsilon\in\{0,1\}$、$m\ge4$，令
+因此 $a_i+a_j\le2$。把 $a_1,\ldots,a_{n-1}$ 首尾配对；若有剩余的中间一项，
+其指标为 $n/2$，也不超过 $1$。于是
 \[
- h=m+\varepsilon,\qquad
- u_i=x_i,\quad v_i=x_{h+i}\quad(0\le i<m).
-\]
-偶数情形中这两组包含全部项；奇数情形中暂时略去中间一项 $x_m$。
-再记
-\[
- U=\sum_{i=0}^{m-1}u_i,\qquad V=\sum_{i=0}^{m-1}v_i,
- \qquad x=u_0,\qquad t=v_0.
-\]
-将 $(h,h,h)$ 与 $(0,h,h)$ 分别代入 \eqref{eq:triple}，得
-\begin{equation}\label{eq:xt}
- -1\le v_i\le t\le1,\qquad -1\le x\le3,\qquad 2xt+t^2\le3.
-\end{equation}
-
-对每一对 $0\le i,j<m$，令 $r(i,j)$ 为 $-i-j$ 除以 $m$ 的最小非负余数。
-当 $(i,j)\ne(0,0)$ 时，$i+j+r(i,j)$ 是不小于 $m$ 的 $m$ 的倍数，故
-\[
- i+j+\bigl(h+r(i,j)\bigr)\ge m+h=N.
-\]
-因此
-\[
- u_i u_j+u_jv_{r(i,j)}+v_{r(i,j)}u_i\le3
- \qquad\bigl((i,j)\ne(0,0)\bigr).
-\]
-唯一例外 $(i,j)=(0,0)$ 对应的左边为 $x^2+2xt$。
-固定 $i$ 时，随着 $j$ 遍历，$r(i,j)$ 恰好遍历 $0,\ldots,m-1$；
-固定 $j$ 时同理。将全部 $m^2$ 个左边相加，得到
-\begin{equation}\label{eq:UV}
- U^2+2UV\le3m^2+E,\qquad E=x^2+2xt-3.
-\end{equation}
-
-\step{引理的证明：控制唯一例外所产生的误差}
-我们证明
-\begin{equation}\label{eq:error}
- E+V^2\le m^2.
-\end{equation}
-先注意到，由 $-1\le x\le3$、$-1\le t\le1$，有
-\begin{equation}\label{eq:easyerror}
- E-6(1+t)=(x-3)(x+3+2t)\le0,
- \quad\text{即}\quad E\le6(1+t).
-\end{equation}
-
-\noindent\textbf{情形一：$V<0$。}
-由于 $v_0=t$，其余 $m-1$ 项均不小于 $-1$，所以
-\[
- t-(m-1)\le V<0.
-\]
-结合 $m\ge4$、$t\le1$，得
-\begin{align*}
- m^2-V^2
- &\ge m^2-(m-1-t)^2\\
- &=(1+t)(2m-1-t)\\
- &\ge6(1+t)\ge E.
-\end{align*}
-
-\noindent\textbf{情形二：$V\ge0$。}
-由 $V\le mt$ 知 $0\le t\le1$。我们先验证
-\begin{equation}\label{eq:positiveerror}
- E\le12(1-t^2).
-\end{equation}
-当 $0\le t\le\tfrac12$ 时，由 \eqref{eq:easyerror} 得
-\[
- E\le6(1+t)\le9\le12(1-t^2).
-\]
-当 $\tfrac12\le t\le1$ 时，利用 $x\ge t>0$ 及 \eqref{eq:xt}，得
-\[
- 0<x\le\frac{3-t^2}{2t},\qquad E\le x^2-t^2.
-\]
-故
-\begin{align*}
- E&\le\frac{(3-t^2)^2}{4t^2}-t^2
-   =\frac{3(t^2+3)}{4t^2}(1-t^2)\\
-  &\le\frac{39}{4}(1-t^2)\le12(1-t^2).
-\end{align*}
-式 \eqref{eq:positiveerror} 得证。于是，由 $0\le V\le mt$、$m^2\ge16>12$，
-\[
- m^2-V^2\ge m^2(1-t^2)\ge12(1-t^2)\ge E.
-\]
-至此，两种情形都证明了 \eqref{eq:error}。
-
-将 \eqref{eq:UV} 与 \eqref{eq:error} 相加，得
-\[
- (U+V)^2\le4m^2,\qquad U+V\le2m.
-\]
-若 $\varepsilon=0$，这就是所求结论。
-若 $\varepsilon=1$，则 $3m\ge2m+1=N$，可将 $(m,m,m)$ 代入
-\eqref{eq:triple} 得 $3x_m^2\le3$，特别地 $x_m\le1$。因此
-\[
- \sum_{i=0}^{N-1}x_i=U+V+x_m\le2m+1=N.
-\]
-引理证毕。
-
-\step{回到原题}
-由引理及代换 $x_i=2b_i-1$，立即得到如下等价表述：
-若长度为 $N\ge8$ 的非增数列 $b_0,\ldots,b_{N-1}$ 取值于 $[0,2]$，
-且指标和不小于 $N$ 时有
-\[
- b_i b_j+b_j b_k+b_k b_i\le b_i+b_j+b_k,
-\]
-则 $\sum_{i=0}^{N-1}b_i\le N$。
-
-对第 (1) 问，取 $N=n-1$，$b_r=a_{r+1}$（$0\le r\le N-1$）。
-当 $r+s+t\ge N$ 时，原数列中相应的指标和满足
-\[
- (r+1)+(s+1)+(t+1)\ge N+3=n+2\ge n,
-\]
-故 $b_r$ 满足上述表述中的全部条件。由于 $N=n-1\ge100$，有
-\[
- \boxed{a_1+\cdots+a_{n-1}\le n-1}.
+ \boxed{\sum_{i=1}^{n-1}a_i\le n-1}.
 \]
 
-对第 (2) 问，直接取 $N=n$、$b_r=a_r$，得到
+\step{(2) 中间四对各节省首项超额的四分之一}
+若 $a_0\le1$，结论由 (1) 立即得到。以下设 $u=a_0-1\in(0,1]$。
+
+对任意 $j\ge n/2$，令 $t=1-a_j\ge0$。
+将 $(0,j,j)$ 代入题设，有 $a_j^2+2a_0a_j\le a_0+2a_j$。
+代入 $a_j=1-t$ 并整理，利用 $a_0\le2$，得到
 \[
- \boxed{a_0+a_1+\cdots+a_{n-1}\le n}.
+ u\le2a_0t-t^2\le4t,
+ \qquad\text{所以}\qquad
+ a_j\le1-\frac u4.
 \]
-当所有 $a_i=1$ 时，题设成立且两问都取等号，故两个上界均能达到。\qedmark
+
+再看 (1) 中的配对，\textbf{取最靠近中间的四对}。
+由于 $n>100$，这四对都存在，而且每一对的较小指标 $i$、较大指标 $j$ 满足
+\[
+ i\ge\frac n2-4>\frac n3,\qquad j\ge\frac n2.
+\]
+因此 $a_i\le1$，$a_j\le1-u/4$，即这四对中的每一对都有
+\[
+ a_i+a_j\le 2-\frac u4.
+\]
+其余各对的和仍不超过 $2$，若有中间单独一项则不超过 $1$。
+四对共节省 $u$，故 (1) 可加强为
+\[
+ \sum_{i=1}^{n-1}a_i\le n-1-u.
+\]
+加上 $a_0=1+u$，即得
+\[
+ \boxed{\sum_{i=0}^{n-1}a_i\le n}.
+\]
+当所有 $a_i=1$ 时，题设成立且两问同时取等号。\qedmark
 
 \newpage
 \section{\texorpdfstring{$4\times n$ 方格表中的 $S$ 形}{4×n 方格表中的 S 形}}
@@ -335,153 +247,55 @@ $H$ 为垂心，$O$ 为外心，$N$ 为 $HO$ 的中点。
 \end{center}
 求全表所有数之和的最小值。
 
-\solution 答案是
-\[
- \boxed{\begin{cases}
- n-1,&n\text{ 为奇数},\\[3pt]
- \dfrac{n^2}{n+1},&n\text{ 为偶数}.
- \end{cases}}
-\]
-以下将行从上至下编号为 $1,2,3,4$，列从左至右编号为 $1,\ldots,n$。
+\solution
+最小值为：$n$ 为奇数时 $\boxed{n-1}$；$n$ 为偶数时 $\boxed{\dfrac{n^2}{n+1}}$。
+记全表总和为 $T$，行、列分别从上到下、从左到右编号。
 
-\step{1. 奇数情形：$n=2k+1$}
-对每个 $r=1,\ldots,k$，在上面两行选取四格
-\[
- (1,2r),\ (1,2r+1),\ (2,2r-1),\ (2,2r).
-\]
-它们构成一个横向 $S$ 形。这 $k$ 个 $S$ 形互不重叠。
-在下面两行作同样的选取，又得到 $k$ 个互不重叠的 $S$ 形，
-且与上面的 $k$ 个也不重叠。因此全表总和至少为 $2k=n-1$。
+\medskip\noindent\textbf{(i) $n=2k+1$。}
+在上两行取 $k$ 个横向 $S$ 形：第 $r$ 个占第 $1$ 行的第 $2r,2r+1$ 格，
+以及第 $2$ 行的第 $2r-1,2r$ 格；下两行同样取 $k$ 个。
+这 $2k$ 个 $S$ 形互不重叠，故 $T\ge2k=n-1$。
+偶数列全填 $1/2$、奇数列全填 $0$ 时，每个 $S$ 形恰有两格为 $1/2$，等号成立。
 
-下图以 $n=7$ 为例，相同字母的四格为一个选中的 $S$ 形，空白格未选：
-\[
-\begin{array}{c|ccccccc}
- &1&2&3&4&5&6&7\\\hline
- 1&&A&A&B&B&C&C\\
- 2&A&A&B&B&C&C&\\
- 3&&D&D&E&E&F&F\\
- 4&D&D&E&E&F&F&
-\end{array}
-\]
-为达到下界，在每个偶数列的四格中都填 $1/2$，每个奇数列的四格中都填 $0$。
-每个竖向 $S$ 形在相邻两列中各占两格；每个横向 $S$ 形在连续三列中分别占
-$1,2,1$ 格。因此每个 $S$ 形恰有两格位于偶数列，其数之和恰为 $1$。
-全表总和为 $4k\cdot\tfrac12=2k=n-1$。
-
-\newpage
-\step{2. 偶数情形：$n=2k$，先证明下界}
-将任一可行填法与其关于表格水平中线的反射填法逐格取平均。
-反射仍将允许的 $S$ 形变为允许的 $S$ 形，而逐格平均保持非负性、所有约束及总和。
-所以证明下界时，可以假设第 $j$ 列从上至下的数为
-\[
- x_j,\quad y_j,\quad y_j,\quad x_j,
- \qquad x_j,y_j\ge0.
-\]
-全表总和为 $T=2\sum_{j=1}^{2k}(x_j+y_j)$。
-
-先列出将要使用的四类 $S$ 形约束。对 $1\le j\le2k-1$，有竖向约束
-\begin{align*}
- V_j&:=x_j+y_j+2y_{j+1}\ge1,\\
- W_j&:=2y_j+x_{j+1}+y_{j+1}\ge1.
-\end{align*}
-对 $1\le j\le2k-2$，有位于第 $1,2$ 行的横向约束
-\begin{align*}
- H_j&:=x_j+x_{j+1}+y_{j+1}+y_{j+2}\ge1,\\
- K_j&:=y_j+y_{j+1}+x_{j+1}+x_{j+2}\ge1.
-\end{align*}
-取如下非负系数加权和：
-\begin{equation}\label{eq:weighted}
- L:=\sum_{r=1}^{k}(V_{2r-1}+W_{2r-1})
- +\sum_{r=1}^{k-1}\bigl(2rH_{2r}+2(k-r)K_{2r-1}\bigr).
+\medskip\noindent\textbf{(ii) $n=2k$。}
+记中间两行的总和为 $I$。将列分为 $k$ 对 $(1,2),(3,4),\ldots,(n-1,n)$。
+每对列中的四个竖向 $S$ 形全部相加，外侧两行各格计一次，中间两行各格计三次，故
+\begin{equation}\label{eq:vertical-count}
+ T+2I\ge4k=2n.
 \end{equation}
-由各项均不小于 $1$，可得
+对第 $r$ 对列，记其中间四格的和为 $I_r$。删去这四格及全表四个角格，
+其余部分可铺成 $n-2$ 个互不重叠的横向 $S$ 形：上两行在缺口两侧反向错开一格，
+分别铺 $r-1$ 个、$k-r$ 个；下两行作上下对称的铺放。例如 $n=8,r=2$ 时，上两行为
 \[
- L\ge2k+\sum_{r=1}^{k-1}\bigl(2r+2(k-r)\bigr)=2k^2.
-\]
-另一方面，展开式 \eqref{eq:weighted} 并合并同类项，得到恒等式
-\begin{equation}\label{eq:weightidentity}
- L=(2k+1)\sum_{j=1}^{2k}(x_j+y_j)-2k(x_1+x_{2k}).
-\end{equation}
-为便于核对，展开后各变量的系数如下：
-\[
-\begin{array}{c|ccc}
- \text{变量}&x_1,\ x_{2k}&x_j\ (2\le j\le2k-1)&y_j\ (1\le j\le2k)\\\hline
- \text{系数}&1&2k+1&2k+1
+\begin{array}{cccccccc}
+ \cdot&A&A&B&B&C&C&\cdot\\
+ A&A&\cdot&\cdot&B&B&C&C
 \end{array}
+\quad\text{（同字母四格为一个 $S$ 形，点号为删去的格子）}.
 \]
-当 $k=1$ 时，上述第二个求和为空，恒等式仍然成立。
-利用 $x_1,x_{2k}\ge0$，最终得到
+由非负性，$T-I_r\ge n-2$。对 $r=1,\ldots,k$ 求和，利用 $\sum I_r=I$，得
+\begin{equation}\label{eq:horizontal-count}
+ kT-I\ge k(n-2).
+\end{equation}
+将 \eqref{eq:vertical-count} 加上 \eqref{eq:horizontal-count} 的两倍，消去 $I$，即得
 \[
- \frac{2k+1}{2}T=(2k+1)\sum_{j=1}^{2k}(x_j+y_j)
- \ge L\ge2k^2,
-\]
-即
-\[
- T\ge\frac{4k^2}{2k+1}=\frac{n^2}{n+1}.
+ (n+1)T\ge2n+2k(n-2)=n^2.
 \]
 
-\newpage
-\step{3. 偶数情形的取等构造}
-令 $q=2k+1$，对 $r=1,\ldots,k$，定义
+为取到等号，先在第 $2r-1,2r$ 两列填入整数块
 \[
- x_{2r-1}=\frac{r-1}{q},\qquad
- x_{2r}=\frac{k-r}{q},\qquad
- y_j=x_j+\frac1q.
-\]
-仍在第 $j$ 列从上至下填入 $x_j,y_j,y_j,x_j$。这些数均非负。
-例如 $n=6$（$k=3$）时，所填数字组成的矩阵为
-\[
- \frac17
  \begin{pmatrix}
- 0&2&1&1&2&0\\
- 1&3&2&2&3&1\\
- 1&3&2&2&3&1\\
- 0&2&1&1&2&0
- \end{pmatrix}.
+ r-1&k-r\\
+ r&k-r+1\\
+ r&k-r+1\\
+ r-1&k-r
+ \end{pmatrix}
+ \qquad(r=1,\ldots,k).
 \]
-
-下面逐类检查全部 $S$ 形。
-
-\noindent\textbf{竖向 $S$ 形。}
-由于上下对称，其四格之和必为某个 $V_j$ 或 $W_j$。
-直接代入构造中的数，可得
-\[
- V_j=W_j=
- \begin{cases}
- 1,&j\text{ 为奇数},\\[2pt]
- 1+\dfrac2q,&j\text{ 为偶数}.
- \end{cases}
-\]
-故全部竖向约束成立。
-
-\noindent\textbf{横向 $S$ 形。}
-当 $1\le j\le2k-2$ 时，将 $j$ 分为奇、偶两种情况代入，均得到
-\[
- x_j+2x_{j+1}+x_{j+2}=\frac{2k-1}{q}.
-\]
-位于第 $1,2$ 行或第 $3,4$ 行的横向 $S$ 形，其四格之和为
-\[
- H_j=K_j=x_j+2x_{j+1}+x_{j+2}+\frac2q=1.
-\]
-位于第 $2,3$ 行的横向 $S$ 形，其四格之和为
-\[
- y_j+2y_{j+1}+y_{j+2}
- =x_j+2x_{j+1}+x_{j+2}+\frac4q
- =1+\frac2q\ge1.
-\]
-当 $n=2$ 时没有横向 $S$ 形，只需前面的竖向检查。
-
-最后计算总和：
-\[
- \sum_{j=1}^{2k}x_j
- =\frac1q\sum_{r=1}^{k}\bigl((r-1)+(k-r)\bigr)
- =\frac{k(k-1)}q,
-\]
-\[
- T=2\sum_{j=1}^{2k}(x_j+y_j)
-  =4\sum_{j=1}^{2k}x_j+\frac{4k}q
-  =\frac{4k^2}{2k+1}.
-\]
-故偶数情形的下界也能达到，连同奇数情形，结论得证。\qedmark
+竖向 $S$ 形的左端列为奇、偶数时，四格之和分别为 $2k+1,2k+3$；
+横向 $S$ 形位于第 $1,2$ 行或第 $3,4$ 行时为 $2k+1$，位于第 $2,3$ 行时为 $2k+3$。
+每块总和为 $4k$，故将全表各数除以 $2k+1$，即得总和为
+$4k^2/(2k+1)=n^2/(n+1)$ 的可行填法。
+（$n=2$ 时横向铺法为空，上述论证仍成立。）\qedmark
 
 \end{document}

@@ -91,27 +91,28 @@ $i,j\in\{1,2,\ldots,m-1\}$，均存在 $k\in\{1,2,\ldots,m\}$，使得 $d_i,d_j,
 \noindent\hspace{2em}证明：直线 $BC$ 与三角形 $AOP$ 的外接圆相切。
 
 \begin{center}
-\begin{tikzpicture}[scale=.65,line cap=round,line join=round,every node/.style={font=\small}]
+\begin{tikzpicture}[scale=.85,line cap=round,line join=round,
+  every node/.style={font=\fontsize{11pt}{13pt}\selectfont}]
   \coordinate (B) at (0,0);
-  \coordinate (C) at (6.6,0);
+  \coordinate (C) at (7.2,0);
   \coordinate (D) at (2.8,0);
-  \coordinate (A) at (2.8,4.4);
-  \coordinate (H) at (2.8,2.42);
-  \coordinate (O) at (3.3,.99);
-  \coordinate (N) at (3.05,1.705);
+  \coordinate (A) at (2.8,5.3);
+  \coordinate (H) at (2.8,2.3245);
+  \coordinate (O) at (3.6,1.4877);
+  \coordinate (N) at (3.2,1.9061);
   \coordinate (P) at (1.75,0);
   \draw (A)--(B)--(C)--cycle;
   \draw (A)--(D) (A)--(O)--(P)--cycle (H)--(O) (P)--(N)--(D);
   \draw (2.8,0) rectangle +(0.18,0.18);
-  \fill (A) circle (1.1pt) (B) circle (1.1pt) (C) circle (1.1pt) (D) circle (1.1pt)
-        (H) circle (1.1pt) (O) circle (1.1pt) (N) circle (1.1pt) (P) circle (1.1pt);
+  \fill (A) circle (1.3pt) (B) circle (1.3pt) (C) circle (1.3pt) (D) circle (1.3pt)
+        (H) circle (1.3pt) (O) circle (1.3pt) (N) circle (1.3pt) (P) circle (1.3pt);
   \node[above] at (A) {$A$};
   \node[below left] at (B) {$B$};
   \node[below right] at (C) {$C$};
   \node[below] at (D) {$D$};
   \node[below] at (P) {$P$};
-  \node[left] at (H) {$H$};
-  \node[left] at (N) {$N$};
+  \node[above right,inner sep=1.2pt] at (H) {$H$};
+  \node[above,inner sep=1.2pt,xshift=1pt] at (N) {$N$};
   \node[right] at (O) {$O$};
 \end{tikzpicture}
 \end{center}

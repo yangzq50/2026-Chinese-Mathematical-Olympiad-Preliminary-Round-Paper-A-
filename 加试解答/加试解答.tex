@@ -98,6 +98,8 @@ $H$ 为垂心，$O$ 为外心，$N$ 为 $HO$ 的中点。
   \coordinate (D) at (0,0);
   \coordinate (P) at (-2,0);
   \coordinate (E) at (-1,4);
+  \coordinate (X) at ($(A)!.5!(B)$);
+  \coordinate (Y) at ($(A)!.5!(C)$);
   \coordinate (H) at (0,{7/2});
   \coordinate (O) at ({7/4},{9/4});
   \coordinate (Op) at ({7/4},{-9/4});
@@ -107,7 +109,7 @@ $H$ 为垂心，$O$ 为外心，$N$ 为 $HO$ 的中点。
   \draw[gray!65,densely dashed] (O)--(Op);
   \draw[blue!65!black,thick] (-1,{15/8}) circle[radius={17/8}];
   \draw[blue!65!black] (A)--(P) (P)--(N)--(D) (D)--(E)--(N);
-  \draw[red!70!black,dashed] (-3.7,4)--(3,4) node[right] {$\ell\parallel BC$};
+  \draw[red!70!black,dashed] (-3.7,4)--(4.9,4) node[right] {$\ell\parallel BC$};
   \pic[draw=blue!65!black,angle radius=7mm,angle eccentricity=1.35,
     "$\alpha$"{font=\scriptsize}] {angle=P--A--D};
   \pic[draw=blue!65!black,angle radius=4mm,angle eccentricity=1.6,
@@ -115,21 +117,23 @@ $H$ 为垂心，$O$ 为外心，$N$ 为 $HO$ 的中点。
   \pic[draw=blue!65!black,angle radius=4mm,angle eccentricity=1.6,
     "$2\alpha$"{font=\scriptsize,fill=white,inner sep=.3pt}] {angle=P--N--D};
   \draw[gray!65] (0,.18)--(.18,.18)--(.18,0);
-  \foreach \Q in {A,B,C,D,P,E,H,O,Op,N}{\fill (\Q) circle[radius=1.05pt];}
+  \foreach \Q in {A,B,C,D,P,E,X,Y,H,O,Op,N}{\fill (\Q) circle[radius=1.05pt];}
   \node[above] at (A) {$A$};
   \node[below left] at (B) {$B$};
   \node[below right] at (C) {$C$};
   \node[below right] at (D) {$D$};
   \node[below left] at (P) {$P$};
   \node[above left] at (E) {$E$};
+  \node[above left] at (X) {$X$};
+  \node[above right] at (Y) {$Y$};
   \node[left] at (H) {$H$};
   \node[right] at (O) {$O$};
   \node[below right] at (Op) {$O'$};
   \node[right] at (N) {$N$};
   \node[blue!65!black,left] at (-3,2.7) {$\omega$};
 \end{tikzpicture}
-\par\small 图中 $E$ 为 $AP$ 中点，$O'$ 为 $O$ 关于 $BC$ 的对称点；
-\par\small 蓝色实线为辅助圆及所用连线，红色虚线为辅助圆在 $E$ 处的切线。
+\par\small $X,E,Y$ 分别为 $AB,AP,AC$ 的中点，同在红色虚线 $\ell$ 上；
+\par\small $O'$ 为 $O$ 关于 $BC$ 的对称点，蓝色圆 $\omega$ 与 $\ell$ 相切于 $E$。
 \end{center}
 
 现在考虑变换 $\mathcal T$：\textbf{先关于 $BC$ 反射，再以 $A$ 为中心作比为 $1/2$ 的位似}。

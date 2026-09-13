@@ -1,0 +1,430 @@
+\documentclass[UTF8,11pt]{ctexart}
+\usepackage[a4paper,top=20mm,bottom=20mm,left=23mm,right=23mm]{geometry}
+\usepackage{amsmath,amssymb,mathtools}
+\usepackage{booktabs,tabularx,array}
+\usepackage{enumitem}
+\usepackage{fancyhdr}
+\usepackage{microtype}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{2026 年全国中学生数学奥林匹克竞赛（预赛）一试（A卷）}
+\fancyhead[R]{参考解答}
+\fancyfoot[C]{\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+\setlength{\headheight}{14pt}
+\setlength{\parindent}{2em}
+\setlength{\parskip}{2pt}
+\linespread{1.28}
+\setlist[itemize]{leftmargin=2.2em,itemsep=2pt,topsep=3pt}
+\newcommand{\ans}[1]{\boxed{#1}}
+
+\begin{document}
+
+\begin{center}
+  {\LARGE\bfseries 2026 年全国中学生数学奥林匹克竞赛（预赛）\par}
+  \vspace{3pt}
+  {\Large\bfseries 一试（A卷）参考解答}
+\end{center}
+
+\section*{填空题答案}
+
+\begin{center}
+\renewcommand{\arraystretch}{1.45}
+\begin{tabular}{c>{$}c<{$}@{\qquad}c>{$}c<{$}}
+\toprule
+题号 & \multicolumn{1}{c}{答案} & 题号 & \multicolumn{1}{c}{答案}\\
+\midrule
+1 & 4 & 5 & \dfrac{3\sqrt{10}}5\\
+2 & 26 & 6 & -\sqrt{\dfrac{2}{\sqrt3}}+\mathrm i\\
+3 & \dfrac{22}{117} & 7 & \dfrac{631}{435}\\
+4 & 19 & 8 & \dfrac{227}{231}\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\section*{1. 平面向量}
+
+由
+\[
+  \vec x\cdot\vec y=2=|\vec x|\,|\vec y|
+\]
+及柯西不等式的取等条件，$\vec x,\vec y$ 同向。又 $|\vec y|=2|\vec x|$，故
+$\vec y=2\vec x$。因此
+\[
+  \vec y\cdot\vec z=2\vec x\cdot\vec z=\ans{4}.
+\]
+
+\section*{2. 等差数列}
+
+设 $a_1=a$，公差为 $d\ne0$，则
+\[
+  a_2=a+d,\qquad a_4=a+3d,\qquad a_8=a+7d.
+\]
+因为 $a_1,2a_2,4a_4,ta_8$ 依次成等差数列，所以前三项满足
+\[
+  2\cdot 2(a+d)=a+4(a+3d).
+\]
+整理得 $a=-8d$。于是前三项为
+\[
+  -8d,\quad -14d,\quad -20d,
+\]
+其公差为 $-6d$，故第四项应为 $-26d$。另一方面，$a_8=a+7d=-d$，从而
+\[
+  t(-d)=-26d.
+\]
+由 $d\ne0$ 得
+\[
+  \ans{t=26}.
+\]
+
+\section*{3. 三角函数}
+
+令 $u=\tan A$，$v=\tan B$。题设两式分别给出
+\[
+  u-\frac1v=9,\qquad v-\frac1u=13,
+\]
+即
+\[
+  uv-1=9v=13u.
+\]
+由于 $A+B=\pi-C$，
+\[
+  \tan C=-\tan(A+B)=\frac{u+v}{uv-1}
+  =\frac{u}{uv-1}+\frac{v}{uv-1}
+  =\frac1{13}+\frac19
+  =\ans{\frac{22}{117}}.
+\]
+
+\section*{4. 集合中的完全平方数}
+
+由定义
+\[
+  S_n=\{20,21,\ldots,20+n\}
+  \cup\{26,28,\ldots,26+2n\}.
+\]
+当 $1\leqslant n\leqslant4$ 时，$S_n$ 中没有完全平方数。当 $n=5$ 时，
+$25=20+5$ 与 $36=26+2\times5$ 同时出现；在 $5\leqslant n\leqslant18$ 时，
+$S_n$ 中的完全平方数始终恰为 $25,36$。当 $n=19$ 时，新增
+\[
+  64=26+2\times19,
+\]
+此时完全平方数共有三个，个数第一次成为奇数。因此
+\[
+  \ans{n=19}.
+\]
+
+\section*{5. 双曲线与平行线}
+
+将 $P(1,0)$ 代入双曲线方程，得 $a^2=1$；再代入 $Q(7,12)$，得
+\[
+  49-\frac{144}{b^2}=1,
+\]
+故 $b^2=3$。于是 $c^2=a^2+b^2=4$，右焦点为 $F(2,0)$。
+
+设 $M$ 为 $PQ$ 的中点，则 $M=(4,6)$。两条不重合的平行线分别经过 $P,Q$，且
+$F$ 到两线的距离相等，所以 $F$ 位于这两条平行线的中间平行线上。该中间平行线经过
+$M$，因而两条直线均平行于 $FM$。直线 $FM$ 的斜率为 $3$，故
+\[
+  l_1:3x-y-3=0,\qquad l_2:3x-y-9=0.
+\]
+因此两平行线间的距离为
+\[
+  \frac{|9-3|}{\sqrt{3^2+(-1)^2}}
+  =\ans{\frac{3\sqrt{10}}5}.
+\]
+
+\section*{6. 复数方程}
+
+方程为
+\[
+  \bigl||z|+z\bigr|+z=\mathrm i.
+\]
+第一项是非负实数。比较实部与虚部，可设
+\[
+  z=-t+\mathrm i,\qquad t\geqslant0,
+\]
+且 $\bigl||z|+z\bigr|=t$。又 $|z|=\sqrt{t^2+1}$，所以
+\[
+  \left|\sqrt{t^2+1}-t+\mathrm i\right|=t.
+\]
+两边平方并整理，得
+\[
+  t^2+2=2t\sqrt{t^2+1}.
+\]
+再次平方可得
+\[
+  (t^2+2)^2=4t^2(t^2+1)
+  \quad\Longrightarrow\quad 3t^4=4.
+\]
+因 $t\geqslant0$，有
+\[
+  t=\sqrt{\frac2{\sqrt3}}.
+\]
+该值满足平方前的方程，故
+\[
+  \ans{z=-\sqrt{\frac2{\sqrt3}}+\mathrm i}.
+\]
+
+\section*{7. 小数部分的最大值}
+
+当 $m=n$ 时，题中式子为 $0$。由对称性，不妨设 $m>n$，并令
+\[
+  t=\frac mn>1,\qquad k=\lfloor t\rfloor.
+\]
+因为 $0<n/m<1$，所以
+\[
+  \left\{\frac mn\right\}+\left\{\frac nm\right\}
+  =t-k+\frac1t.
+\]
+函数 $t+1/t$ 在 $t>1$ 上严格递增。
+
+若 $k\geqslant2$，则 $k\leqslant t<k+1$，从而
+\[
+  t-k+\frac1t<1+\frac1{k+1}\leqslant\frac43.
+\]
+
+若 $k=1$，则 $n<m<2n$。当 $n\leqslant15$ 时，
+\[
+  \frac mn\leqslant\frac{2n-1}{n}\leqslant\frac{29}{15};
+\]
+当 $n\geqslant16$ 时，由 $m\leqslant30$，
+\[
+  \frac mn\leqslant\frac{30}{16}<\frac{29}{15}.
+\]
+所以此时 $t$ 的最大值在 $(m,n)=(29,15)$ 处取得。相应的值为
+\[
+  \frac{14}{15}+\frac{15}{29}=\frac{631}{435}>\frac43.
+\]
+故所求最大值为
+\[
+  \ans{\frac{631}{435}}.
+\]
+
+\section*{8. 正方体染色概率}
+
+从 $12$ 条棱中任选 $6$ 条染红，共有
+\[
+  \binom{12}{6}=924
+\]
+种等可能方案。以下计算反面事件：六个面均不恰含两条红棱。
+
+先说明，在反面事件中，一个面的红棱数不可能是 $4$。若某面四棱全红，则其余仅有
+两条红棱。与该面相邻的四个面各已经含有一条红棱；要使它们都不恰含两条红棱，余下
+两条红棱在每个相邻面中必须同时出现或同时不出现。但该面之外的任意两条不同棱，在
+这四个相邻面中的归属集合都不相同，故必有一个相邻面只含余下两棱中的一条，矛盾。
+
+将红棱与未染红的棱互换，反面事件保持不变，而一个没有红棱的面会变成四棱全红。
+所以一个面的红棱数也不可能是 $0$。于是反面事件中，每个面的红棱数只能是 $1$ 或
+$3$。每条红棱属于两个面，六条红棱在各面计数之和为 $12$。设有 $r$ 个面含三条红棱，
+则
+\[
+  3r+(6-r)=12,
+\]
+从而 $r=3$。
+
+这三个含三条红棱的面中不能有两个是相对面。否则全部六条红棱都在这两个相对面的
+八条棱中，另外四个面各至多含两条红棱，而它们的红棱计数之和为 $6$；若均不含两条，
+每面至多含一条，总和至多为 $4$，矛盾。因此三个含三条红棱的面两两相邻，交于同一
+顶点 $V$。顶点 $V$ 有 $8$ 种选择。
+
+固定 $V$，记其对顶点为 $W$。将十二条棱分成三类：与 $V$ 相连的三条棱中有 $X$ 条
+红棱，与 $W$ 相连的三条棱中有 $Z$ 条红棱，其余六条棱中有 $H$ 条红棱。分别对经过
+$V$、经过 $W$ 的三个面计算红棱数之和，得到
+\[
+  2X+H=9,\qquad 2Z+H=3.
+\]
+故 $X-Z=3$。由 $0\leqslant X,Z\leqslant3$，只能有
+\[
+  X=3,\qquad Z=0,\qquad H=3.
+\]
+其余六条棱首尾相接构成一个六边形。每一对相邻棱中必须恰有一条红棱，故六边形上的
+棱只能红、白交替，共有两种染法。反面事件因此共有
+\[
+  8\times2=16
+\]
+种。所求概率为
+\[
+  1-\frac{16}{924}=\ans{\frac{227}{231}}.
+\]
+
+\section*{9. 实数 $C$ 的最小值}
+
+原方程组为
+\[
+  \begin{cases}
+    2^x+\log_2y=C,\\
+    2^{-x}-\log_4y=2C.
+  \end{cases}
+\]
+将第二式乘以 $2$ 后与第一式相加，消去对数项，得到
+\[
+  2^x+2\cdot2^{-x}=5C.
+\]
+由基本不等式
+\[
+  5C\geqslant2\sqrt{2^x\cdot2\cdot2^{-x}}=2\sqrt2,
+\]
+所以 $C\geqslant2\sqrt2/5$。等号成立当且仅当
+\[
+  2^x=2\cdot2^{-x},
+\]
+即 $x=1/2$。此时由第一式取
+\[
+  \log_2y=\frac{2\sqrt2}{5}-\sqrt2=-\frac{3\sqrt2}{5},
+  \qquad y=2^{-3\sqrt2/5}>0,
+\]
+原方程组确实成立。因此
+\[
+  \ans{C_{\min}=\frac{2\sqrt2}{5}}.
+\]
+
+\section*{10. 小钢球个数的最大值}
+
+以圆柱轴线为 $z$ 轴，下底面所在平面为 $z=0$。两个大铁球的半径等于圆柱底面半径，
+故其球心均在轴线上。圆柱高为 $4$，两个单位球互不重叠且均在容器内，因此它们的球心
+只能是
+\[
+  O_1=(0,0,1),\qquad O_2=(0,0,3).
+\]
+
+设一个小钢球的半径为 $r$，球心到圆柱轴线的距离为 $\rho$，球心高度为 $z$。它与两个
+大铁球均外切，故
+\[
+  \rho^2+(z-1)^2=(1+r)^2,
+  \qquad
+  \rho^2+(z-3)^2=(1+r)^2.
+\]
+两式相减得 $z=2$，进而
+\[
+  \rho^2+1=(1+r)^2. \tag{1}
+\]
+小球位于圆柱内，故 $\rho+r\leqslant1$，特别地 $r\leqslant1$。由于球心高度为 $2$，
+小球不可能与上、下底面相切；题设要求它与容器内表面相切，所以它必与侧面相切，即
+\[
+  \rho=1-r. \tag{2}
+\]
+联立 (1)、(2)，得到
+\[
+  r=\frac14,\qquad \rho=\frac34.
+\]
+
+所以所有小球的球心均在平面 $z=2$ 内、半径为 $3/4$ 的同一个圆周上。为使小球内部
+互不相交，任意两球心的距离至少为 $2r=1/2$。
+
+若有至少 $10$ 个小球，将球心按圆周顺序排列，必有两个相邻球心所对的圆心角不超过
+$36^\circ$。这两个球心的距离至多为
+\[
+  2\cdot\frac34\sin18^\circ
+  =\frac{3(\sqrt5-1)}8<\frac12,
+\]
+矛盾。因此小球至多有 $9$ 个。
+
+另一方面，把九个球心置于该圆的一个内接正九边形的九个顶点上，最近两球心的距离为
+\[
+  \frac32\sin20^\circ>\frac12.
+\]
+最后一个不等式可严格验证如下：若 $s=\sin20^\circ\leqslant1/3$，则因
+$3s-4s^3$ 在 $[0,1/2]$ 上递增，有
+\[
+  \frac{\sqrt3}{2}=\sin60^\circ=3s-4s^3
+  \leqslant\frac{23}{27}<\frac{\sqrt3}{2},
+\]
+矛盾。因此九个小球可以放入，最大可能个数为
+\[
+  \ans{9}.
+\]
+
+\section*{11. 最短有趣数列及其个数}
+
+设选出的十项等比子列为
+\[
+  b_j=a_{i_j}\qquad (j=1,2,\ldots,10),
+\]
+公比为 $q\ne\pm1$。按等比数列的定义，各项均非零。令
+\[
+  \Delta_j=b_{j+1}-b_j\qquad(j=1,2,\ldots,9).
+\]
+原数列相邻两项之差为 $\pm1$，所以任意两项之差均为整数，特别地每个 $\Delta_j$ 都是
+非零整数。又由等比关系，
+\[
+  \Delta_{j+1}=q\Delta_j.
+\]
+故 $q=\Delta_2/\Delta_1$ 是非零有理数。将其写为最简分数
+\[
+  q=\frac ps,\qquad p\in\mathbb Z\setminus\{0\},\quad
+  s\in\mathbb Z_{>0},\quad \gcd(|p|,s)=1.
+\]
+因为
+\[
+  \Delta_9=\Delta_1\frac{p^8}{s^8}\in\mathbb Z,
+\]
+所以 $s^8\mid\Delta_1$。于是存在非零整数 $D$，使得
+\[
+  \Delta_j=Dp^{j-1}s^{9-j}\qquad(j=1,2,\ldots,9).
+\]
+
+原数列每走一步，数值只改变 $1$，故
+\[
+  i_{j+1}-i_j\geqslant|b_{j+1}-b_j|=|\Delta_j|.
+\]
+从而
+\[
+\begin{aligned}
+  m-1&\geqslant i_{10}-i_1\\
+     &\geqslant\sum_{j=1}^9|\Delta_j|\\
+     &=|D|\bigl(s^8+|p|s^7+\cdots+|p|^8\bigr).
+\end{aligned}
+\]
+由于 $q\ne\pm1$，正整数 $|p|,s$ 不会同时等于 $1$，其中至少一个不小于 $2$。因此
+\[
+  m-1\geqslant1+2+2^2+\cdots+2^8=511,
+\]
+即 $m\geqslant512$。
+
+数列
+\[
+  1,2,3,\ldots,512
+\]
+含有十项等比子列 $1,2,4,\ldots,512$，所以
+\[
+  \ans{m_0=512}.
+\]
+
+下面计算长度为 $512$ 的有趣数列个数。此时上述各个不等式必须同时取等。因此
+\[
+  |D|=1,\qquad \{|p|,s\}=\{1,2\},\qquad i_1=1,\qquad i_{10}=512,
+\]
+并且在每两个相邻的等比子列项之间，原数列必须始终沿同一方向逐次改变 $1$，不能折返。
+公比只有
+\[
+  q\in\left\{2,\frac12,-2,-\frac12\right\}.
+\]
+由
+\[
+  \Delta_1=(q-1)b_1=Ds^8
+\]
+可知，对于每个公比，$D=\pm1$ 分别唯一确定首项：
+
+\begin{center}
+\renewcommand{\arraystretch}{1.35}
+\begin{tabular}{c c}
+\toprule
+$q$ & $b_1=a_1$ 的两个可能值\\
+\midrule
+$2$ & $\pm1$\\
+$1/2$ & $\pm512$\\
+$-2$ & $\pm\dfrac13$\\
+$-1/2$ & $\pm\dfrac{512}{3}$\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+对表中的每一种选择，先取相应的十项等比数列，再在相邻两项间以步长 $+1$ 或 $-1$
+单调补齐；总步数恰为 $511$，故得到一个长度为 $512$ 的有趣数列。八种选择的首项互不
+相同，所得数列互不相同；上述取等条件也表明不存在其他数列。因此
+\[
+  \ans{\text{不同的最短有趣数列共有 }8\text{ 个}}.
+\]
+
+\end{document}

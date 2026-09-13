@@ -12,6 +12,7 @@
 \setlist[enumerate]{leftmargin=2.45em,itemsep=1.2pt,topsep=2pt,parsep=0pt}
 \newcommand{\blank}{\underline{\hspace{2.8em}}}
 \newcommand{\score}[1]{\textbf{（本题满分 #1 分）}}
+\newcommand{\problemsep}{\par\addvspace{9pt}}
 
 \begin{document}
 \fontsize{12.8pt}{21pt}\selectfont
@@ -82,15 +83,14 @@
 \noindent\textbf{一、（本题满分 40 分）}\quad
 设 $n$ 是正整数，$1=d_1<d_2<\cdots<d_m=n$ 是 $n$ 的所有正约数。已知 $m\geqslant4$，并且对任意
 $i,j\in\{1,2,\ldots,m-1\}$，均存在 $k\in\{1,2,\ldots,m\}$，使得 $d_i,d_j,d_k$ 在某种顺序下构成等差数列。求 $m$ 的所有可能值。
-
-\vspace{6pt}
+\problemsep
 \noindent\textbf{二、（本题满分 40 分）}\quad
 如图，在锐角三角形 $ABC$ 中，$AB<AC$，$AD$ 是 $BC$ 边上的高，$H$ 为垂心，$O$ 为外心，$N$ 为 $HO$ 的中点，线段 $BD$ 内一点 $P$ 满足 $\angle PND=2\angle PAD$。
 
-\vspace{0pt}
 \noindent\hspace{2em}证明：直线 $BC$ 与三角形 $AOP$ 的外接圆相切。
 
-\begin{center}
+\par\vspace{4pt}
+{\centering
 \begin{tikzpicture}[scale=.85,line cap=round,line join=round,
   every node/.style={font=\fontsize{11pt}{13pt}\selectfont}]
   \coordinate (B) at (0,0);
@@ -115,9 +115,9 @@ $i,j\in\{1,2,\ldots,m-1\}$，均存在 $k\in\{1,2,\ldots,m\}$，使得 $d_i,d_j,
   \node[above,inner sep=1.2pt,xshift=1pt] at (N) {$N$};
   \node[right] at (O) {$O$};
 \end{tikzpicture}
-\end{center}
+\par}
 
-\vspace{0pt}
+\problemsep
 \noindent\textbf{三、（本题满分 50 分）}\quad
 设整数 $n>100$，实数 $a_0,a_1,\ldots,a_{n-1}$ 同时满足 (i) 和 (ii)：
 
@@ -127,16 +127,16 @@ $i,j\in\{1,2,\ldots,m-1\}$，均存在 $k\in\{1,2,\ldots,m\}$，使得 $d_i,d_j,
 \[
   a_i a_j+a_j a_k+a_k a_i\leqslant a_i+a_j+a_k.
 \]
-\noindent\hspace{2em}\begin{tabular}[t]{@{}l@{\quad}l@{}}
-  证明： & (1) $a_1+a_2+\cdots+a_{n-1}\leqslant n-1$；\\
-         & (2) $a_0+a_1+\cdots+a_{n-1}\leqslant n$。
-\end{tabular}
+\noindent\hspace{2em}\makebox[3.3em][l]{证明：}(1) $a_1+a_2+\cdots+a_{n-1}\leqslant n-1$；
 
-\vspace{4pt}
+\noindent\hspace{2em}\makebox[3.3em][l]{}(2) $a_0+a_1+\cdots+a_{n-1}\leqslant n$。
+
+\problemsep
 \noindent\textbf{四、（本题满分 50 分）}\quad
 给定整数 $n\geqslant2$。在一个 $4\times n$ 的方格表中，由四个方格构成的下图之一均称为“$S$ 形”。
 
-\begin{center}
+\par\vspace{4pt}
+{\centering
 \begin{tikzpicture}[x=5mm,y=5mm,line width=.55pt,dashed/.style={dash pattern=on 1.5pt off 1.5pt}]
   % 竖向 S 形
   \begin{scope}[shift={(0,0)}]
@@ -157,8 +157,9 @@ $i,j\in\{1,2,\ldots,m-1\}$，均存在 $k\in\{1,2,\ldots,m\}$，使得 $d_i,d_j,
     \draw[dashed] (1,1)--(2,1) (1,1)--(1,2) (2,0)--(2,1);
   \end{scope}
 \end{tikzpicture}
-\end{center}
+\par}
 
+\vspace{4pt}
 \noindent 在方格表中每个方格内填上一个非负实数。已知每个 $S$ 形内四个方格中的数之和均不小于 $1$。求方格表内所有数之和的最小可能值。
 
 \end{document}

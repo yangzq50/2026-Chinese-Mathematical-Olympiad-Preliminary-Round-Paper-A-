@@ -3,7 +3,7 @@
 \usepackage{amsmath,amssymb,amsthm,mathtools}
 \usepackage{tikz,booktabs,array,enumitem,fancyhdr}
 \usepackage[hidelinks,pdfauthor={数学解答},pdftitle={2026高联预赛A卷加试解答}]{hyperref}
-\usetikzlibrary{calc}
+\usetikzlibrary{calc,angles,quotes}
 \setlength{\headheight}{14pt}
 \pagestyle{fancy}
 \fancyhf{}
@@ -68,7 +68,7 @@
 取 $k=i$ 即得到公差为 $0$ 的等差数列。故题设全部满足。\qedmark
 
 \newpage
-\section{由倍角条件证明圆的切线}
+\section{斜边中点、九点圆与相切}
 \problem
 在锐角三角形 $ABC$ 中，$AB<AC$，$AD$ 是 $BC$ 边上的高，
 $H$ 为垂心，$O$ 为外心，$N$ 为 $HO$ 的中点。
@@ -76,48 +76,79 @@ $H$ 为垂心，$O$ 为外心，$N$ 为 $HO$ 的中点。
 证明：直线 $BC$ 与三角形 $AOP$ 的外接圆相切。
 
 \solution
-以 $D$ 为原点、$DC$ 为 $x$ 轴正方向，并将长度单位取为 $AD$，设
+\textbf{取 $AP$ 的中点 $E$，连接 $DE,EN$。}
+记 $\alpha=\angle PAD$。在直角三角形 $ADP$ 中，斜边中点给出 $EA=ED=EP$，故
 \[
- A=(0,1),\quad B=(-b,0),\quad C=(c,0),\quad P=(-t,0).
+ \angle DEP=2\angle EAD=2\angle PAD=\angle DNP.
 \]
-锐角条件及 $AB<AC$ 给出 $0<b<c$、$bc<1$，且 $0<t<b$。
-由高线和垂直平分线的方程可得
-\[
- H=(0,bc),\qquad
- O=\left(\frac{c-b}{2},\frac{1-bc}{2}\right).
-\]
-记 $O=(u,v)$，则 $u>0$、$0<v<\tfrac12$，并且
-\[
- N=\left(\frac u2,\frac{1-v}{2}\right).
-\]
-令 $s=u/2>0$、$w=(1-v)/2>0$。从 $N$ 出发的两个向量为
-\[
- \overrightarrow{ND}=(-s,-w),\qquad
- \overrightarrow{NP}=(-s-t,-w).
-\]
-它们的数量积为 $s(s+t)+w^2>0$，故 $\theta=\angle PND$ 是锐角，且
-\[
- \tan\theta=\frac{tw}{s(s+t)+w^2}.
-\]
-另一方面，令 $\alpha=\angle PAD$，则 $\tan\alpha=t$。
-由 $\theta=2\alpha<\pi/2$ 知 $t<1$，可以使用倍角公式，得到
-\[
- \frac{tw}{s(s+t)+w^2}=\frac{2t}{1-t^2}.
-\]
-约去 $t>0$，代入 $s=u/2,w=(1-v)/2$，整理为
-\begin{equation}\label{eq:tangent}
- u^2+2ut+(1-v)t^2-v(1-v)=0.
-\end{equation}
+由于 $E,N$ 同在直线 $DP$ 的 $A$ 侧，故 $D,E,N,P$ 四点共圆，记此圆为 $\omega$。
+这里 $AB<AC$ 保证 $BC$ 的中点位于 $D$ 的 $C$ 侧，因而 $O,N$ 与 $E$
+分居直线 $AD$ 两侧，特别地 $N\ne E$。
 
-考虑圆
-\begin{equation}\label{eq:circle}
- \Gamma:\quad (x+t)^2+y^2-(1+t^2)y=0.
-\end{equation}
-它的圆心为 $\bigl(-t,(1+t^2)/2\bigr)$，半径为 $(1+t^2)/2$，
-故与 $x$ 轴相切于 $P$；代入 $A=(0,1)$ 可知 $A\in\Gamma$。
-将 $O=(u,v)$ 代入式 \eqref{eq:circle}，左边恰为式 \eqref{eq:tangent} 的左边，
-所以 $O\in\Gamma$。三点 $A,O,P$ 互异，且同在非退化圆 $\Gamma$ 上，
-因此 $\Gamma$ 就是三角形 $AOP$ 的外接圆，$BC$ 与之相切于 $P$。\qedmark
+由 $ED=EP$，$E$ 位于弦 $DP$ 的垂直平分线上，所以
+\textbf{$\omega$ 在 $E$ 处的切线 $\ell$ 平行于 $BC$}。
+
+\begin{center}
+\begin{tikzpicture}[scale=.70,line cap=round,line join=round,
+  every node/.style={font=\small}]
+  % The chosen configuration satisfies the given angle condition exactly.
+  \coordinate (A) at (0,8);
+  \coordinate (B) at ({(7-sqrt(497))/4},0);
+  \coordinate (C) at ({(7+sqrt(497))/4},0);
+  \coordinate (D) at (0,0);
+  \coordinate (P) at (-2,0);
+  \coordinate (E) at (-1,4);
+  \coordinate (H) at (0,{7/2});
+  \coordinate (O) at ({7/4},{9/4});
+  \coordinate (Op) at ({7/4},{-9/4});
+  \coordinate (N) at ({7/8},{23/8});
+  \draw[gray!65] (A)--(B)--(C)--cycle (A)--(D) (H)--(O);
+  \draw[blue!65!black,densely dashed] (A)--(Op);
+  \draw[gray!65,densely dashed] (O)--(Op);
+  \draw[blue!65!black,thick] (-1,{15/8}) circle[radius={17/8}];
+  \draw[blue!65!black] (A)--(P) (P)--(N)--(D) (D)--(E)--(N);
+  \draw[red!70!black,dashed] (-3.7,4)--(3,4) node[right] {$\ell\parallel BC$};
+  \pic[draw=blue!65!black,angle radius=7mm,angle eccentricity=1.35,
+    "$\alpha$"{font=\scriptsize}] {angle=P--A--D};
+  \pic[draw=blue!65!black,angle radius=4mm,angle eccentricity=1.6,
+    "$2\alpha$"{font=\scriptsize}] {angle=P--E--D};
+  \pic[draw=blue!65!black,angle radius=4mm,angle eccentricity=1.6,
+    "$2\alpha$"{font=\scriptsize,fill=white,inner sep=.3pt}] {angle=P--N--D};
+  \draw[gray!65] (0,.18)--(.18,.18)--(.18,0);
+  \foreach \Q in {A,B,C,D,P,E,H,O,Op,N}{\fill (\Q) circle[radius=1.05pt];}
+  \node[above] at (A) {$A$};
+  \node[below left] at (B) {$B$};
+  \node[below right] at (C) {$C$};
+  \node[below right] at (D) {$D$};
+  \node[below left] at (P) {$P$};
+  \node[above left] at (E) {$E$};
+  \node[left] at (H) {$H$};
+  \node[right] at (O) {$O$};
+  \node[below right] at (Op) {$O'$};
+  \node[right] at (N) {$N$};
+  \node[blue!65!black,left] at (-3,2.7) {$\omega$};
+\end{tikzpicture}
+\par\small 图中 $E$ 为 $AP$ 中点，$O'$ 为 $O$ 关于 $BC$ 的对称点；
+\par\small 蓝色实线为辅助圆及所用连线，红色虚线为辅助圆在 $E$ 处的切线。
+\end{center}
+
+现在考虑变换 $\mathcal T$：\textbf{先关于 $BC$ 反射，再以 $A$ 为中心作比为 $1/2$ 的位似}。
+设 $X,Y$ 分别为 $AB,AC$ 的中点。显然
+\[
+ \mathcal T(A)=D,\qquad \mathcal T(B)=X,\qquad
+ \mathcal T(C)=Y,\qquad \mathcal T(P)=E.
+\]
+因此，$\mathcal T$ 把 $\triangle ABC$ 的外接圆变为经过 $D,X,Y$ 的九点圆。
+九点圆的圆心正是 $HO$ 的中点 $N$，而反射、位似都把圆心映为圆心，故
+\[
+ \mathcal T(O)=N.
+\]
+这也说明图中的 $N$ 是 $AO'$ 的中点。
+
+于是，$\mathcal T$ 把 $\triangle AOP$ 的外接圆变为 $\omega$，
+把直线 $BC$ 变为过 $E$ 且平行于 $BC$ 的直线，即 $\ell$。
+已知 $\omega$ 与 $\ell$ 相切于 $E$，将变换逆向还原，便知
+\textbf{$\triangle AOP$ 的外接圆与 $BC$ 相切于 $P$}。\qedmark
 
 \newpage
 \section{有指标限制的三项不等式}
